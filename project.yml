@@ -7,13 +7,29 @@ packages:
       parameters: {}
       annotations: {}
       functions:
-        - name: hello
-          binary: false
-          main: ""
-          runtime: python:default
-          web: true
-          webSecure: false
-          parameters: {}
-          environment: {}
-          annotations: {}
-          limits: {}
+          - name: hello
+            binary: false
+            main: ""
+            runtime: python:default
+            web: true
+            webSecure: false
+            parameters: {}
+            environment: {}
+            annotations: {}
+            limits: {}
+    - name: orly
+      shared: false
+      environment: {}
+      parameters: {}
+      annotations: {}
+      functions:
+          - name: generate
+            binary: false
+            main: ""
+            runtime: python:3.11
+            web: true
+            webSecure: false
+            parameters: {}
+            environment: {}
+            annotations: {}
+            limits: {}

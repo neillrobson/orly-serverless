@@ -1,4 +1,4 @@
-import os, re, datetime
+import io, os, re, base64
 from PIL import Image, ImageDraw, ImageFont
 from fontTools.ttLib import TTFont
 
@@ -132,14 +132,13 @@ def generate_image(
     offset = (80, 40)
     im.paste(coverImage, offset, coverImage)
 
-    final_path = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), ("%s.png" % datetime.datetime.now()))
-    )
-    im.save(final_path)
+    with io.BytesIO() as output:
+        im.save(output, format="PNG")
+        img_string = output.getvalue()
 
     im.close()
 
-    return final_path
+    return base64.b64encode(img_string)
 
 
 def clamp_title_text(title, width):
